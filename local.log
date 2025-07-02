@@ -1,0 +1,21 @@
+Watching for file changes with StatReloader
+[02/Jul/2025 01:43:31] "GET / HTTP/1.1" 200 10731
+[02/Jul/2025 01:43:31] "GET /static/admin/css/fonts.css HTTP/1.1" 404 1817
+[02/Jul/2025 01:43:31] "GET / HTTP/1.1" 200 10731
+[02/Jul/2025 01:43:31] "GET /static/admin/css/fonts.css HTTP/1.1" 404 1817
+[02/Jul/2025 01:43:31] "GET / HTTP/1.1" 200 10731
+[02/Jul/2025 01:43:31] "GET /static/admin/css/fonts.css HTTP/1.1" 404 1817
+[02/Jul/2025 01:43:32] "GET / HTTP/1.1" 200 10731
+[02/Jul/2025 01:43:32] "GET /static/admin/css/fonts.css HTTP/1.1" 404 1817
+[02/Jul/2025 01:43:40] "GET / HTTP/1.1" 200 10731
+[02/Jul/2025 01:43:40] "GET /static/admin/css/fonts.css HTTP/1.1" 404 1817
+[02/Jul/2025 01:43:41] "GET / HTTP/1.1" 200 10731
+[02/Jul/2025 01:43:41] "GET /static/admin/css/fonts.css HTTP/1.1" 404 1817
+[02/Jul/2025 01:43:41] "GET / HTTP/1.1" 200 10731
+[02/Jul/2025 01:43:41] "GET /static/admin/css/fonts.css HTTP/1.1" 404 1817
+[02/Jul/2025 01:43:41] "GET / HTTP/1.1" 200 10731
+[02/Jul/2025 01:43:41] "GET /static/admin/css/fonts.css HTTP/1.1" 404 1817
+[02/Jul/2025 01:43:41] "GET / HTTP/1.1" 200 10731
+[02/Jul/2025 01:43:41] "GET /static/admin/css/fonts.css HTTP/1.1" 404 1817
+[02/Jul/2025 01:43:41] "GET / HTTP/1.1" 200 10731
+[02/Jul/2025 01:43:41] "GET /static/admin/css/fonts.css HTTP/1.1" 404 1817
