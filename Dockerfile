@@ -14,4 +14,4 @@ COPY . /app/
 # iamywl 쓰고있는 포트가 많아서 그냥 가장 뜬금 없는 포트사용함
 EXPOSE 12345
 # 컨테이너 시작 시 Django 개발 서버 실행
-CMD ["python", "roma/manage.py", "runserver", "0.0.0.0:12345"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:12345"]
