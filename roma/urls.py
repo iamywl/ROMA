@@ -15,8 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+## 이 부분이 왜 추가되는지 몰루..
+from init_roma import views as init_roma_views 
+
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('init_roma/', include('init_roma.urls')),
+    path('', init_roma_views.home_page, name='root_home_page'),
+
 ]

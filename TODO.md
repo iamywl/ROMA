@@ -17,3 +17,13 @@ docker run -d -p 12345:12345 --name roma -v "$(pwd):/app" roma:1.0 bash -c " \
 echo "local.log" >> .gitignore
 
 ```
+
+
+
+새로운 기능이나 페이지 추가 하고 싶을  때 
+
+```python
+docker exec -it roma python manage.py startapp {기능이름}
+
+docker exec -it roma python manage.py startapp init_roma
+``` 
