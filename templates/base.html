@@ -1,0 +1,33 @@
+{% load static %} <!-- 이 한 줄을 맨 위에 추가해주세요! -->
+<!-- templates/base.html -->
+<head>
+    <meta charset="UTF-8">
+    <title>My Roma Project</title>
+    <!-- CSS 파일을 head로 옮기는 것이 표준적인 방법입니다 -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body style="padding-top: 60px;"> <!-- 헤더 높이만큼 상단 여백 추가 -->
+
+    <header class="main-header">
+        <div class="logo">
+            <a href="{% url 'home' %}">ROMA</a>
+        </div>
+        <nav class="nav-links">
+            {% if user.is_authenticated %}
+                <span>{{ user.username }}님</span>
+                <a href="#">마이페이지</a>
+                <a href="{% url 'logout' %}">로그아웃</a>
+            {% else %}
+                <a href="{% url 'login' %}">로그인</a>
+                <a href="{% url 'signup' %}">회원가입</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- 각 페이지의 컨텐츠가 여기에 들어옵니다. -->
+        {% endblock %}
+    </main>
+
+</body>

@@ -1,0 +1,51 @@
+{% extends 'base.html' %} <!-- base.html의 모든 디자인(헤더, CSS 등)을 상속받습니다 -->
+
+{% block content %} <!-- base.html의 'content' 블록을 이 내용으로 채웁니다 -->
+
+<div class="login-container"> <!-- 로그인 페이지와 동일한 CSS 클래스 재사용 -->
+    <h2>회원가입</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- 전체 폼 관련 오류 메시지 (예: 비밀번호 불일치) -->
+        {% if form.non_field_errors %}
+            <div class="alert alert-error">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- 
+            UserCreationForm의 각 필드에 스타일을 직접 적용하기 위해
+            as_p 대신 수동으로 렌더링합니다.
+        -->
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">사용자 이름</label>
+            {{ form.username }}
+            {% for error in form.username.errors %}<div class="alert alert-error">{{ error }}</div>{% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.password1.id_for_label }}">비밀번호</label>
+            {{ form.password1 }}
+            {% for error in form.password1.errors %}<div class="alert alert-error">{{ error }}</div>{% endfor %}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.password2.id_for_label }}">비밀번호 확인</label>
+            {{ form.password2 }}
+            {% for error in form.password2.errors %}<div class="alert alert-error">{{ error }}</div>{% endfor %}
+        </div>
+
+        <button type="submit" class="btn-login">회원가입</button>
+    </form>
+    
+    <div class="extra-links">
+        <span>이미 계정이 있으신가요?</span>
+        <a href="{% url 'login' %}">로그인</a>
+    </div>
+</div>
+
+{% endblock %}

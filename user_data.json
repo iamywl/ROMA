@@ -1,0 +1,10 @@
+[
+    {
+        "username": "testuser",
+        "password": "pbkdf2_sha256$600000$jivR6qfN62VrUprXivmqYL$r/agOpsbq7COzQfyFkUXr38eqyXs3GTZV2UOvziLYcE="
+    },
+    {
+        "username": "leelee",
+        "password": "pbkdf2_sha256$600000$YL28wGT7ZQWoJneaFijtFM$1ek8XUoAVR0p2w0s1z4Gi5Hvgly4nt2lYdwd/2sZSI4="
+    }
+]
