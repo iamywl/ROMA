@@ -12,6 +12,7 @@ def home_page(request):
 
 # 두 번째 뷰: 소개 페이지 내용을 반환합니다.
 def about_init_roma(request):
+
     """
     http://localhost:12345/init_roma/about/ 주소에 접속했을 때 보이는 페이지입니다.
     """
