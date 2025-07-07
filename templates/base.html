@@ -6,7 +6,7 @@
     <!-- CSS 파일을 head로 옮기는 것이 표준적인 방법입니다 -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body style="padding-top: 60px;"> <!-- 헤더 높이만큼 상단 여백 추가 -->
+<body> <!-- 헤더 높이만큼 상단 여백 추가 -->
 
     <header class="main-header">
         <div class="logo">
@@ -15,7 +15,7 @@
         <nav class="nav-links">
             {% if user.is_authenticated %}
                 <span>{{ user.username }}님</span>
-                <a href="#">마이페이지</a>
+                <a href="{% url 'my_page' %}">마이페이지</a>
                 <a href="{% url 'logout' %}">로그아웃</a>
             {% else %}
                 <a href="{% url 'login' %}">로그인</a>

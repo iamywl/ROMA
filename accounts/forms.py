@@ -2,18 +2,38 @@
 from django import forms
 from .models import Profile
 
-class ProfileForm(forms.ModelForm):
+class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['college', 'major', 'student_id', 'current_lifestyle', 'desired_lifestyle']
+        exclude = ('user',) 
+
         widgets = {
-            'current_lifestyle': forms.Textarea(attrs={'rows': 4, 'placeholder': '예: 아침형 인간, 주 3회 이상 운동, 야식 안 먹음'}),
-            'desired_lifestyle': forms.Textarea(attrs={'rows': 4, 'placeholder': '예: 조용하고 잠이 많은 룸메이트 선호, 청결 중요, 주기적인 청소 원함'}),
-        }
-        labels = {
-            'college': '단과대학',
-            'major': '전공',
-            'student_id': '학번',
-            'current_lifestyle': '나의 현재 생활패턴',
-            'desired_lifestyle': '내가 원하는 룸메이트 생활패턴',
+            # '나는?' 섹션
+            'gender': forms.RadioSelect,
+            'bedtime': forms.RadioSelect,
+            'wakeup_time': forms.RadioSelect,
+            'sleeping_habit': forms.RadioSelect,
+            'room_dryer': forms.RadioSelect,
+            'in_room_call': forms.RadioSelect,
+            'heat_sensitivity': forms.RadioSelect,
+            'cold_sensitivity': forms.RadioSelect,
+            'smoking': forms.RadioSelect,
+            'bug_response': forms.RadioSelect,
+            'late_night_snack': forms.RadioSelect,
+            'cleaning_style': forms.RadioSelect,
+            
+            # '룸메는?' 섹션
+            'pref_same_college': forms.RadioSelect,
+            'pref_bedtime': forms.RadioSelect,
+            'pref_wakeup_time': forms.RadioSelect,
+            'pref_sleeping_habit': forms.RadioSelect,
+            'pref_in_room_call': forms.RadioSelect,
+            'pref_room_dryer': forms.RadioSelect,
+            'pref_heat_sensitivity': forms.RadioSelect,
+            'pref_cold_sensitivity': forms.RadioSelect,
+            'pref_smoking': forms.RadioSelect,
+            'pref_bug_response': forms.RadioSelect,
+            'pref_late_night_snack': forms.RadioSelect,
+            'pref_cleaning_style': forms.RadioSelect,
+            'pref_relationship': forms.RadioSelect,
         }

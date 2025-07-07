@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/checklist.css' %}">
+
+<div class="checklist-container">
+    <h1>📝 기숙사 룸메 체크리스트</h1>
+    <p>{{ user.username }}님의 정보를 입력하고 저장해주세요.</p>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert-success">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- ================= 나는? 섹션 ================= -->
+        <div class="checklist-section">
+            <h2># 나는?</h2>
+            
+            <h3 class="section-subtitle">기본 정보</h3>
+            <div class="form-row">
+                <div class="form-item"><label for="{{ form.name.id_for_label }}">이름</label>{{ form.name }}</div>
+                <div class="form-item"><label for="{{ form.birth_year.id_for_label }}">생년</label>{{ form.birth_year }}</div>
+            </div>
+            <div class="form-row">
+                <div class="form-item"><label for="{{ form.college.id_for_label }}">단과대학</label>{{ form.college }}</div>
+                <div class="form-item"><label for="{{ form.major.id_for_label }}">전공</label>{{ form.major }}</div>
+            </div>
+            <div class="form-row">
+                <div class="form-item"><label for="{{ form.mbti.id_for_label }}">MBTI</label>{{ form.mbti }}</div>
+                <div class="form-item"><label>성별</label><div class="choice-options">{% for radio in form.gender %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            </div>
+
+            <h3 class="section-subtitle">생활 패턴</h3>
+            <div class="form-item"><label>취침시간</label><div class="choice-options">{% for radio in form.bedtime %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>기상시간</label><div class="choice-options">{% for radio in form.wakeup_time %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>샤워시간 (아침/저녁, 소요시간 등)</label>{{ form.shower_time }}</div>
+            <div class="form-item"><label>잠버릇 (이갈이, 코골이 등)</label><div class="choice-options">{% for radio in form.sleeping_habit %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>잠귀 (소음, 밝기 민감도)</label>{{ form.noise_sensitivity }}</div>
+            <div class="form-item"><label>방에서 드라이기 사용</label><div class="choice-options">{% for radio in form.room_dryer %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>실내통화</label><div class="choice-options">{% for radio in form.in_room_call %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            
+            <h3 class="section-subtitle">개인 성향</h3>
+            <div class="form-item"><label>더위 타는 정도</label><div class="choice-options">{% for radio in form.heat_sensitivity %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>추위 타는 정도</label><div class="choice-options">{% for radio in form.cold_sensitivity %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>향수 사용 (미사용, 가끔, 매일 등)</label>{{ form.perfume_usage }}</div>
+            <div class="form-item"><label>흡연여부</label><div class="choice-options">{% for radio in form.smoking %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>벌레 잡는 정도</label><div class="choice-options">{% for radio in form.bug_response %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>야식 먹는 빈도</label><div class="choice-options">{% for radio in form.late_night_snack %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>청소 주기</label><div class="choice-options">{% for radio in form.cleaning_style %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+        </div>
+
+        <!-- ================= 룸메는? 섹션 ================= -->
+        <div class="checklist-section">
+            <h2># 룸메는?</h2>
+            
+            <div class="form-item"><label>단과대</label><div class="choice-options">{% for radio in form.pref_same_college %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>취침시간</label><div class="choice-options">{% for radio in form.pref_bedtime %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>기상시간</label><div class="choice-options">{% for radio in form.pref_wakeup_time %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>잠버릇</label><div class="choice-options">{% for radio in form.pref_sleeping_habit %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>실내통화</label><div class="choice-options">{% for radio in form.pref_in_room_call %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>방에서 드라이기 사용</label><div class="choice-options">{% for radio in form.pref_room_dryer %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>더위 타는 정도</label><div class="choice-options">{% for radio in form.pref_heat_sensitivity %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>추위 타는 정도</label><div class="choice-options">{% for radio in form.pref_cold_sensitivity %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>흡연 여부</label><div class="choice-options">{% for radio in form.pref_smoking %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>벌레 잡는 정도</label><div class="choice-options">{% for radio in form.pref_bug_response %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>야식 먹는 빈도</label><div class="choice-options">{% for radio in form.pref_late_night_snack %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>청소 주기</label><div class="choice-options">{% for radio in form.pref_cleaning_style %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+            <div class="form-item"><label>원하는 룸메 관계</label><div class="choice-options">{% for radio in form.pref_relationship %}<label>{{ radio.tag }}<span>{{ radio.choice_label }}</span></label>{% endfor %}</div></div>
+        </div>
+
+        <button type="submit" class="btn-login">저장하기</button>
+    </form>
+</div>
+{% endblock %}

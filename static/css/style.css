@@ -4,11 +4,8 @@
 body {
     background-color: #f4f6f8; /* 토스 배경색과 유사 */
     font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "나눔고딕", "Malgun Gothic", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    padding-top: 60px;
 }
 
 /* 로그인 폼을 감싸는 컨테이너 */
@@ -217,4 +214,14 @@ body {
     color: #c7254e;
     background-color: #f9f2f4;
     border-color: #f5c6cb;
+}
+
+/* static/css/style.css 맨 위에 추가 */
+
+body {
+    padding-top: 60px; /* 헤더 높이만큼 본문 시작 위치를 내림 */
+}
+
+main {
+    display: block; /* main 태그가 블록 요소임을 명확히 함 */
 }
