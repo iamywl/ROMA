@@ -28,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 INSTALLED_APPS = [      # <--- 바로 여기에 있습니다!
     'django.contrib.admin',
@@ -40,6 +39,7 @@ INSTALLED_APPS = [      # <--- 바로 여기에 있습니다!
     'accounts',
     'init_roma',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
