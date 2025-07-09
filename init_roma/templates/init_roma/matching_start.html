@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="main-container">
+    <h1>매칭 시작</h1>
+    <p>아래 버튼을 눌러 매칭 상대를 찾아보세요.</p>
+    <a href="{% url 'matching_search' %}" class="btn">매칭하기</a>
+    <a href="{% url 'home' %}" class="btn">홈으로</a>
+</div>
+{% endblock %}

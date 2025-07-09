@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>전체 유저별 TOP 5 매칭</h1>
+{% for result in results %}
+    <h2>{{ result.profile.user.username }} ({{ result.profile.name }})</h2>
+    <ul>
+        {% if result.score > 0 %}
+        <li>{{ result.profile.user.username }} ({{ result.profile.name }}) - 점수: {{ result.score }}</li>
+        {% else %}
+        <li>매칭 없음</li>
+        {% endif %}
+    </ul>
+{% endfor %}
+{% endblock %}
