@@ -1,55 +1,43 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-
 <div class="main-container">
     <div class="welcome-header">
-        {% if user.is_authenticated %}
-            <!-- 로그인 했을 때 보이는 메시지 -->
-            <h1>{{ user.username }}님, 환영합니다!</h1>
-            <p>ROMA 프로젝트의 다양한 기능들을 확인해보세요.</p>
-        {% else %}
-            <!-- 로그인 안 했을 때 보이는 메시지 -->
-            <h1>ROMA 프로젝트에 오신 것을 환영합니다.</h1>
-            <p>먼저 로그인 또는 회원가입을 진행해주세요.</p>
-        {% endif %}
+        <h1>안녕하세요, {{ user.username }}님!</h1>
+        <p>프로젝트 ROMA에 오신 것을 환영합니다.</p>
     </div>
 
     <div class="card-grid">
-        {% if user.is_authenticated %}
-            <!-- 로그인 한 사용자에게만 보이는 카드 -->
-            <a href="{% url 'my_page' %}" class="card">
-                <h3>마이페이지</h3>
-                <p>내 정보를 확인하고 수정할 수 있습니다.</p>
-            </a>
-            <a href="{% url 'logout' %}" class="card">
-                <h3>로그아웃</h3>
-                <p>안전하게 계정에서 로그아웃합니다.</p>
-            </a>
-        {% else %}
-            <!-- 로그인 안 한 사용자에게 보이는 카드 -->
-            <a href="{% url 'login' %}" class="card">
-                <h3>로그인</h3>
-                <p>기존 계정으로 서비스를 시작하세요.</p>
-            </a>
-            <a href="{% url 'signup' %}" class="card">
-                <h3>회원가입</h3>
-                <p>새로운 계정을 만들어 시작할 수 있습니다.</p>
-            </a>
+        <a href="{% url 'my_page' %}" class="card">
+            <h3>📝 내 체크리스트 작성</h3>
+            <p>나의 생활 패턴과 룸메이트 선호도를 입력하여 프로필을 완성하세요.</p>
+        </a>
+        <div class="card">
+            <h3>🔍 룸메이트 찾기 (구현 예정)</h3>
+            <p>나와 잘 맞는 룸메이트를 추천받고 찾아보세요.</p>
+        </div>
+    </div>
+
+    <!-- ===== 사용자 검색해서 채팅하기 ===== -->
+    <div class="user-search-container">
+        <h2>사용자 검색해서 채팅하기</h2>
+        <p>채팅할 상대방의 아이디를 입력하고 '채팅 시작' 버튼을 눌러주세요.</p>
+
+        <!-- 에러 메시지 표시 (View에서 전달받음) -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert-error">{{ message }}</div>
+            {% endfor %}
         {% endif %}
 
-        <!-- 공통으로 보이는 카드 -->
-        <a href="#" class="card">
-            <h3>게시판</h3>
-            <p>다른 사용자들과 소통해보세요. (준비 중)</p>
-        </a>
-        <a href="#" class="card">
-            <h3>서비스 소개</h3>
-            <p>ROMA 프로젝트에 대해 더 알아보세요.</p>
-        </a>
+        <!-- 폼을 제출하면 'chat:search_user' URL로 POST 요청을 보냄 -->
+        <form action="{% url 'chat:search_user' %}" method="post" class="search-form">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="상대방 아이디 입력" required>
+            <button type="submit">채팅 시작</button>
+        </form>
     </div>
-</div>
+    <!-- ===== 여기까지 추가 ===== -->
 
+</div>
 {% endblock %}

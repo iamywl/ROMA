@@ -1,21 +1,24 @@
-{% load static %} <!-- 이 한 줄을 맨 위에 추가해주세요! -->
-<!-- templates/base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>My Roma Project</title>
-    <!-- CSS 파일을 head로 옮기는 것이 표준적인 방법입니다 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROMA</title>
+    
+    <!-- 이 부분이 핵심입니다. 프로젝트 전반에 사용되는 style.css를 불러옵니다. -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body> <!-- 헤더 높이만큼 상단 여백 추가 -->
-
+<body>
     <header class="main-header">
         <div class="logo">
             <a href="{% url 'home' %}">ROMA</a>
         </div>
         <nav class="nav-links">
             {% if user.is_authenticated %}
-                <span>{{ user.username }}님</span>
+                <a href="{% url 'chat:chat_list' %}">채팅</a>
                 <a href="{% url 'my_page' %}">마이페이지</a>
+                <span>{{ user.username }}님</span>
                 <a href="{% url 'logout' %}">로그아웃</a>
             {% else %}
                 <a href="{% url 'login' %}">로그인</a>
@@ -25,9 +28,7 @@
     </header>
 
     <main>
-        {% block content %}
-        <!-- 각 페이지의 컨텐츠가 여기에 들어옵니다. -->
-        {% endblock %}
+        {% block content %}{% endblock %}
     </main>
-
 </body>
+</html>

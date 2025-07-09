@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+.chat-container { width: 100%; max-width: 800px; margin: 40px auto; display: flex; flex-direction: column; height: calc(100vh - 140px); background-color: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+.chat-header { padding: 20px; border-bottom: 1px solid #f0f0f0; font-size: 18px; font-weight: 600; }
+#chat-log { flex-grow: 1; overflow-y: scroll; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+.message { display: flex; max-width: 70%; }
+.message-content { padding: 10px 15px; border-radius: 18px; line-height: 1.5; }
+.message-meta { align-self: flex-end; font-size: 12px; color: #aaa; margin: 0 8px; white-space: nowrap; }
+.message.sent { align-self: flex-end; flex-direction: row-reverse; }
+.message.received { align-self: flex-start; flex-direction: row; }
+.message.sent .message-content { background: #3182f6; color: white; }
+.message.received .message-content { background: #f0f2f5; color: #333; }
+.chat-input-area { display: flex; gap: 10px; padding: 20px; border-top: 1px solid #f0f0f0; }
+#chat-message-input { flex-grow: 1; padding: 12px; border: 1px solid #e5e8eb; border-radius: 8px; font-size: 15px; resize: none; }
+#chat-message-submit { padding: 12px 20px; border: none; background-color: #3182f6; color: #fff; border-radius: 8px; cursor: pointer; font-weight: 600; }
+</style>
+
+<div class="chat-container">
+    <div class="chat-header">{{ other_user.username }}님과의 채팅</div>
+
+    <div id="chat-log">
+        {% for message in past_messages %}
+            <div class="message {% if message.sender == request.user %}sent{% else %}received{% endif %}">
+                <div class="message-content">{{ message.message }}</div>
+                <div class="message-meta">{{ message.timestamp|date:"H:i" }}</div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="chat-input-area">
+        <input id="chat-message-input" type="text" placeholder="메시지를 입력하세요...">
+        <button id="chat-message-submit">보내기</button>
+    </div>
+</div>
+
+{{ room_name|json_script:"room-name" }}
+{{ request.user.username|json_script:"user-username" }}
+
+<script>
+    const roomName = JSON.parse(document.getElementById('room-name').textContent);
+    const currentUserUsername = JSON.parse(document.getElementById('user-username').textContent);
+    const chatLog = document.querySelector('#chat-log');
+    const chatMessageInput = document.querySelector('#chat-message-input');
+    const chatMessageSubmit = document.querySelector('#chat-message-submit');
+
+    function scrollToBottom() {
+        chatLog.scrollTop = chatLog.scrollHeight;
+    }
+    scrollToBottom();
+
+    const chatSocket = new WebSocket('ws://' + window.location.host + '/ws/chat/' + roomName + '/');
+
+    chatSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        const message = data.message;
+        const sender = data.sender;
+        const timestamp = new Date(data.timestamp);
+
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        if (sender === currentUserUsername) {
+            messageDiv.classList.add('sent');
+        } else {
+            messageDiv.classList.add('received');
+        }
+        
+        const contentDiv = document.createElement('div');
+        contentDiv.classList.add('message-content');
+        contentDiv.textContent = message;
+
+        const metaDiv = document.createElement('div');
+        metaDiv.classList.add('message-meta');
+        metaDiv.textContent = `${String(timestamp.getHours()).padStart(2, '0')}:${String(timestamp.getMinutes()).padStart(2, '0')}`;
+
+        messageDiv.appendChild(contentDiv);
+        messageDiv.appendChild(metaDiv);
+        chatLog.appendChild(messageDiv);
+        scrollToBottom();
+    };
+
+    chatSocket.onclose = function(e) { console.error('Chat socket closed unexpectedly'); };
+
+    chatMessageInput.focus();
+    chatMessageInput.onkeyup = function(e) { if (e.key === 'Enter') { chatMessageSubmit.click(); } };
+    chatMessageSubmit.onclick = function(e) {
+        const message = chatMessageInput.value;
+        if (message.trim() === '') return;
+        chatSocket.send(JSON.stringify({'message': message}));
+        chatMessageInput.value = '';
+    };
+</script>
+{% endblock %}

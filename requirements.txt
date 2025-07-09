@@ -1,2 +1,6 @@
 Django==4.2
-
+# requirements.txt (기존 내용 아래에 추가)
+channels
+channels-redis
+daphne
+whitenoise

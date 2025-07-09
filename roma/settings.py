@@ -38,18 +38,21 @@ INSTALLED_APPS = [      # <--- 바로 여기에 있습니다!
     'django.contrib.staticfiles',
     'accounts',
     'init_roma',
+    'chat',
+    'channels',
 ]
 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware' 를 SessionMiddleware 바로 아래에 추가
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
 ]
 
 ROOT_URLCONF = 'roma.urls'
@@ -72,6 +75,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'roma.wsgi.application'
 
+# === Channels 설정 추가 ===
+ASGI_APPLICATION = 'roma.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('redis', 6379)],  # docker-compose에서 서비스 이름이 'redis'
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -121,6 +135,12 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+# collectstatic 명령 실행 시 static 파일들이 모일 경로
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# WhiteNoise가 압축 및 캐싱 처리를 할 수 있도록 스토리지 설정
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
