@@ -1,295 +1,334 @@
-/* static/css/style.css */
+/* static/css/style.css - 완전한 파일 */
 
 /* 전체 페이지 기본 스타일 */
 body {
-    background-color: #f4f6f8; /* 토스 배경색과 유사 */
-    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "나눔고딕", "Malgun Gothic", sans-serif;
-    margin: 0;
-    padding-top: 60px;
+  background-color: #f4f6f8; /* 토스 배경색과 유사 */
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "나눔고딕", "Malgun Gothic",
+    sans-serif;
+  margin: 0;
+  padding-top: 60px;
+}
+
+/* 가운데 정렬을 위한 main 태그 스타일 */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 60px); /* 헤더 높이 제외 */
+  padding: 20px;
 }
 
 /* 로그인 폼을 감싸는 컨테이너 */
 .login-container {
-    background-color: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 360px;
-    box-sizing: border-box;
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 360px;
+  box-sizing: border-box;
+  margin: 0 auto; /* 가운데 정렬 추가 */
 }
 
 /* 제목 스타일 (예: '로그인') */
 .login-container h2 {
-    font-size: 24px;
-    font-weight: 700;
-    margin-top: 0;
-    margin-bottom: 30px;
-    color: #333d4b;
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: #333d4b;
+  text-align: center; /* 제목 가운데 정렬 */
 }
 
 /* 입력 필드 그룹 (라벨 + 입력창) */
 .form-group {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 /* '아이디', '비밀번호' 같은 라벨 */
 .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 14px;
-    color: #58616c;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #58616c;
 }
 
 /* 아이디, 비밀번호 입력창 */
 .form-group input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #e5e8eb;
-    border-radius: 8px;
-    font-size: 16px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e5e8eb;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 
 /* 입력창 클릭 시 테두리 효과 */
 .form-group input:focus {
-    outline: none;
-    border-color: #3182f6; /* 토스 파란색 */
+  outline: none;
+  border-color: #3182f6; /* 토스 파란색 */
 }
 
 /* 로그인 버튼 */
 .btn-login {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    background-color: #3182f6;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 10px;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  background-color: #3182f6;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 /* 버튼에 마우스 올렸을 때 */
 .btn-login:hover {
-    background-color: #1b64da;
+  background-color: #1b64da;
 }
 
 /* 회원가입 등 추가 링크 영역 */
 .extra-links {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
 }
 
 .extra-links a {
-    color: #58616c;
-    text-decoration: none;
-}
-.extra-links a:hover {
-    text-decoration: underline;
+  color: #58616c;
+  text-decoration: none;
 }
 
-/* static/css/style.css 에 추가할 내용 */
+.extra-links a:hover {
+  text-decoration: underline;
+}
 
 /* --- 홈페이지 스타일 --- */
-
 /* 전체 컨텐츠를 감싸는 메인 컨테이너 */
 .main-container {
-    width: 100%;
-    max-width: 600px; /* 로그인 폼보다 넓게 */
-    margin: 40px auto; /* 위아래 여백 추가, 좌우는 자동으로 중앙 정렬 */
-    padding: 20px;
-    box-sizing: border-box;
+  width: 100%;
+  max-width: 600px; /* 로그인 폼보다 넓게 */
+  margin: 40px auto; /* 위아래 여백 추가, 좌우는 자동으로 중앙 정렬 */
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* 환영 메시지 헤더 */
 .welcome-header {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .welcome-header h1 {
-    font-size: 28px;
-    font-weight: 700;
-    color: #191f28;
-    margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #191f28;
+  margin: 0;
 }
 
 .welcome-header p {
-    font-size: 16px;
-    color: #58616c;
-    margin-top: 8px;
+  font-size: 16px;
+  color: #58616c;
+  margin-top: 8px;
 }
 
 /* 카드 UI를 담을 그리드 */
 .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 반응형 그리드 */
-    gap: 20px; /* 카드 사이의 간격 */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 반응형 그리드 */
+  gap: 20px; /* 카드 사이의 간격 */
 }
 
 /* 카드 기본 스타일 */
 .card {
-    background-color: white;
-    border-radius: 16px;
-    padding: 24px;
-    text-decoration: none; /* a 태그의 밑줄 제거 */
-    color: inherit; /* a 태그의 기본 파란색 제거 */
-    display: block;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: white;
+  border-radius: 16px;
+  padding: 24px;
+  text-decoration: none; /* a 태그의 밑줄 제거 */
+  color: inherit; /* a 태그의 기본 파란색 제거 */
+  display: block;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 /* 카드에 마우스 올렸을 때 효과 */
 .card:hover {
-    transform: translateY(-5px); /* 살짝 위로 뜨는 효과 */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-5px); /* 살짝 위로 뜨는 효과 */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
 .card h3 {
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 10px;
-    color: #333d4b;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333d4b;
 }
 
 .card p {
-    font-size: 15px;
-    color: #838d99;
-    line-height: 1.5;
-    margin-bottom: 0;
+  font-size: 15px;
+  color: #838d99;
+  line-height: 1.5;
+  margin-bottom: 0;
 }
-
-/* static/css/style.css 에 추가할 내용 */
 
 /* --- 네비게이션 바 / 헤더 스타일 --- */
 .main-header {
-    position: fixed; /* 화면 상단에 고정 */
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: white;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-    padding: 0 40px; /* 좌우 여백 */
-    height: 60px;
-    display: flex;
-    justify-content: space-between; /* 양쪽 끝으로 정렬 */
-    align-items: center;
-    z-index: 1000; /* 다른 요소들 위에 보이도록 */
-    box-sizing: border-box;
+  position: fixed; /* 화면 상단에 고정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  padding: 0 40px; /* 좌우 여백 */
+  height: 60px;
+  display: flex;
+  justify-content: space-between; /* 양쪽 끝으로 정렬 */
+  align-items: center;
+  z-index: 1000; /* 다른 요소들 위에 보이도록 */
+  box-sizing: border-box;
 }
 
 .main-header .logo a {
-    font-size: 20px;
-    font-weight: 800;
-    color: #191f28;
-    text-decoration: none;
+  font-size: 20px;
+  font-weight: 800;
+  color: #191f28;
+  text-decoration: none;
 }
 
-.main-header .nav-links a, .main-header .nav-links span {
-    color: #58616c;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 15px;
-    font-weight: 500;
+.main-header .nav-links a,
+.main-header .nav-links span {
+  color: #58616c;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .main-header .nav-links a:hover {
-    color: #3182f6;
+  color: #3182f6;
 }
-
 
 /* --- 알림 / 오류 메시지 스타일 --- */
 .alert {
-    padding: 12px 16px;
-    margin-bottom: 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    border: 1px solid transparent;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: 1px solid transparent;
 }
 
 .alert-error {
-    color: #c7254e;
-    background-color: #f9f2f4;
-    border-color: #f5c6cb;
-}
-
-/* static/css/style.css 맨 위에 추가 */
-
-body {
-    padding-top: 60px; /* 헤더 높이만큼 본문 시작 위치를 내림 */
-}
-
-main {
-    display: block; /* main 태그가 블록 요소임을 명확히 함 */
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-color: #f5c6cb;
 }
 
 /* 사용자 검색 컨테이너 스타일 */
 .user-search-container {
-    margin-top: 50px;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  margin-top: 50px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .user-search-container h2 {
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 8px;
-    color: #333d4b;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #333d4b;
 }
+
 .user-search-container p {
-    font-size: 15px;
-    color: #58616c;
-    margin-bottom: 24px;
+  font-size: 15px;
+  color: #58616c;
+  margin-bottom: 24px;
 }
 
 .search-form {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .search-form input[type="text"] {
-    flex-grow: 1;
-    padding: 14px;
-    border: 1px solid #e5e8eb;
-    border-radius: 8px;
-    font-size: 16px;
+  flex-grow: 1;
+  padding: 14px;
+  border: 1px solid #e5e8eb;
+  border-radius: 8px;
+  font-size: 16px;
 }
 
 .search-form input[type="text"]:focus {
-    outline: none;
-    border-color: #3182f6;
+  outline: none;
+  border-color: #3182f6;
 }
 
 .search-form button {
-    padding: 14px 24px;
-    border: none;
-    background-color: #3182f6;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
+  padding: 14px 24px;
+  border: none;
+  background-color: #3182f6;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .search-form button:hover {
-    background-color: #1b64da;
+  background-color: #1b64da;
 }
 
-/* alert-error 클래스가 이미 있다면 이 부분은 추가하지 않아도 됩니다. */
-.alert-error {
-    color: #c7254e;
-    background-color: #f9f2f4;
-    border-color: #f5c6cb;
-    padding: 12px 16px;
-    margin-bottom: 16px;
-    border-radius: 8px;
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .main-header {
+    padding: 0 20px;
+  }
+
+  .main-header .nav-links a,
+  .main-header .nav-links span {
+    margin-left: 10px;
     font-size: 14px;
-    border: 1px solid transparent;
+  }
+
+  main {
+    padding: 10px;
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+
+  .login-container {
+    padding: 30px 20px;
+    margin: 0 10px;
+    max-width: none;
+  }
+
+  .main-container {
+    margin: 20px auto;
+    padding: 10px;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-header .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .main-header .nav-links a,
+  .main-header .nav-links span {
+    margin-left: 5px;
+    font-size: 13px;
+  }
+
+  .login-container {
+    padding: 20px 15px;
+  }
 }
