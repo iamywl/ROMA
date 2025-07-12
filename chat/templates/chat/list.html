@@ -3,27 +3,111 @@
 
 {% block content %}
 <style>
+/* --- 이 스타일 블록 전체가 중요합니다 --- */
 .chat-list-container { max-width: 800px; margin: 40px auto; padding: 20px; }
-.chat-list-header { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
-.chat-list-header h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
-.chat-list-header p { font-size: 16px; color: #58616c; }
+
+/* 검색창 스타일 (이 부분이 복원되었습니다) */
+.user-search-container {
+    margin-bottom: 40px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.user-search-container h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #333d4b;
+}
+.user-search-container p {
+    font-size: 15px;
+    color: #58616c;
+    margin-bottom: 24px;
+}
+.search-form { display: flex; gap: 10px; }
+.search-form input[type="text"] {
+    flex-grow: 1;
+    padding: 14px;
+    border: 1px solid #e5e8eb;
+    border-radius: 8px;
+    font-size: 16px;
+}
+.search-form input[type="text"]:focus {
+    outline: none;
+    border-color: #3182f6;
+}
+.search-form button {
+    padding: 14px 24px;
+    border: none;
+    background-color: #3182f6;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.search-form button:hover { background-color: #1b64da; }
+.alert-error {
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-color: #f5c6cb;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    border: 1px solid transparent;
+}
+
+/* 채팅 목록 스타일 */
+.chat-list-header {
+    margin-bottom: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+.chat-list-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
 .chat-list-item { display: flex; align-items: center; padding: 20px; background-color: #fff; border-radius: 12px; margin-bottom: 15px; text-decoration: none; color: inherit; box-shadow: 0 2px 8px rgba(0,0,0,.05); transition: transform .2s, box-shadow .2s; }
 .chat-list-item:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,.1); }
 .chat-list-item .info { flex-grow: 1; }
 .chat-list-item .username { font-size: 18px; font-weight: 600; color: #333; }
 .chat-list-item .last-message { font-size: 15px; color: #666; margin-top: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 500px; }
-.chat-list-item .timestamp { font-size: 13px; color: #999; margin-left: auto; white-space: nowrap; }
+.chat-list-item .timestamp { font-size: 13px; color: #999; margin-left: 15px; white-space: nowrap; }
+.unread-dot { width: 8px; height: 8px; background-color: #3182f6; border-radius: 50%; margin-left: auto; }
+.chat-list-item.unread .username, .chat-list-item.unread .last-message { font-weight: 700; color: #191f28; }
 .no-chats { text-align: center; padding: 50px; color: #888; }
 </style>
 
 <div class="chat-list-container">
+    
+    <div class="user-search-container">
+        <h2>새로운 채팅 시작하기</h2>
+        <p>채팅할 상대방의 아이디를 검색해주세요.</p>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert-error">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form action="{% url 'chat:search_user' %}" method="post" class="search-form">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="상대방 아이디 입력" required>
+            <button type="submit">검색</button>
+        </form>
+    </div>
+
     <div class="chat-list-header">
-        <h1>채팅 목록</h1>
-        <p>대화를 나눈 사용자 목록입니다. 가장 최근에 대화한 순서로 정렬됩니다.</p>
+        <h1>나의 채팅 목록</h1>
     </div>
 
     {% for item in chat_list %}
-        <a href="{% url 'chat:chat_room' item.other_user.pk %}" class="chat-list-item">
+        <a href="{% url 'chat:chat_room' item.other_user.pk %}" class="chat-list-item {% if item.has_unread %}unread{% endif %}">
             <div class="info">
                 <div class="username">{{ item.other_user.username }}</div>
                 {% if item.last_message %}
@@ -35,13 +119,15 @@
                 {% endif %}
             </div>
             {% if item.last_message %}
-            <div class="timestamp">{{ item.last_message.timestamp|date:"m월 d일" }}</div>
+                <div class="timestamp">{{ item.last_message.timestamp|date:"m월 d일" }}</div>
+            {% endif %}
+            {% if item.has_unread %}
+                <div class="unread-dot"></div>
             {% endif %}
         </a>
     {% empty %}
         <div class="no-chats">
             <p>아직 진행중인 채팅이 없습니다.</p>
-            <p>홈 화면의 검색 기능을 통해 새로운 채팅을 시작해보세요!</p>
         </div>
     {% endfor %}
 </div>

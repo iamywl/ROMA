@@ -6,35 +6,27 @@ from django.contrib import messages
 from django.urls import reverse
 from .models import ChatRoom, ChatMessage
 
+# chat/views.py 의 chat_list 함수
 @login_required
 def chat_list(request):
-    # 현재 유저가 참여하고 있는 모든 채팅방을 가져옴
     chat_rooms = request.user.chat_rooms.all()
-    
-    # 각 채팅방에 대한 상대방 정보와 마지막 메시지를 담을 리스트
     rooms_with_details = []
     for room in chat_rooms:
-        # 상대방 유저 찾기
         other_participant = room.participants.exclude(pk=request.user.pk).first()
-        # 마지막 메시지 찾기
         last_message = room.messages.order_by('-timestamp').first()
         
+        # --- 안 읽은 메시지 확인 로직 추가 ---
+        has_unread = room.messages.filter(is_read=False).exclude(sender=request.user).exists()
+
         if other_participant:
             rooms_with_details.append({
                 'room': room,
                 'other_user': other_participant,
                 'last_message': last_message,
+                'has_unread': has_unread, # 컨텍스트에 추가
             })
-
-    # 마지막 메시지 시간을 기준으로 내림차순 정렬
-    rooms_with_details.sort(
-        key=lambda x: x['last_message'].timestamp if x['last_message'] else x['room'].created_at,
-        reverse=True
-    )
-
-    context = {
-        'chat_list': rooms_with_details
-    }
+    rooms_with_details.sort(key=lambda x: x['last_message'].timestamp if x['last_message'] else x['room'].created_at, reverse=True)
+    context = {'chat_list': rooms_with_details}
     return render(request, 'chat/list.html', context)
 
 @login_required
