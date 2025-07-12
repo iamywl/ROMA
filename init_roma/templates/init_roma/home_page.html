@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <div class="main-container">
@@ -7,37 +8,31 @@
         <p>프로젝트 ROMA에 오신 것을 환영합니다.</p>
     </div>
 
+    <!-- 카드 메뉴들을 실제 기능으로 연결하고, 불필요한 검색창은 제거합니다. -->
     <div class="card-grid">
         <a href="{% url 'my_page' %}" class="card">
-            <h3>📝 내 체크리스트 작성</h3>
+            <h3>📝 내 프로필 작성</h3>
             <p>나의 생활 패턴과 룸메이트 선호도를 입력하여 프로필을 완성하세요.</p>
         </a>
-        <div class="card">
-            <h3>🔍 룸메이트 찾기 (구현 예정)</h3>
+        
+        <!-- "룸메이트 찾기" 카드를 실제 기능으로 연결합니다. -->
+        <a href="{% url 'realll_match:find_matches' %}" class="card">
+            <h3>🔍 룸메이트 찾기</h3>
             <p>나와 잘 맞는 룸메이트를 추천받고 찾아보세요.</p>
-        </div>
+        </a>
+
+        <!-- "채팅" 카드를 추가하여 채팅 목록으로 바로 갈 수 있게 합니다. -->
+        <a href="{% url 'chat:chat_list' %}" class="card">
+            <h3>💬 채팅 목록 보기</h3>
+            <p>대화를 나눈 사용자 목록을 확인하고 채팅을 계속하세요.</p>
+        </a>
     </div>
 
-    <!-- ===== 사용자 검색해서 채팅하기 ===== -->
-    <div class="user-search-container">
-        <h2>사용자 검색해서 채팅하기</h2>
-        <p>채팅할 상대방의 아이디를 입력하고 '채팅 시작' 버튼을 눌러주세요.</p>
-
-        <!-- 에러 메시지 표시 (View에서 전달받음) -->
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert-error">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
-
-        <!-- 폼을 제출하면 'chat:search_user' URL로 POST 요청을 보냄 -->
-        <form action="{% url 'chat:search_user' %}" method="post" class="search-form">
-            {% csrf_token %}
-            <input type="text" name="username" placeholder="상대방 아이디 입력" required>
-            <button type="submit">채팅 시작</button>
-        </form>
-    </div>
-    <!-- ===== 여기까지 추가 ===== -->
+    <!-- 
+        사용자 검색 기능은 이제 "채팅 목록" 페이지에 통합하거나, 
+        별도 기능으로 만들 수 있으므로 홈에서는 제거합니다.
+        기존의 user-search-container는 삭제합니다.
+    -->
 
 </div>
 {% endblock %}

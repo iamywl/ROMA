@@ -40,6 +40,7 @@ INSTALLED_APPS = [      # <--- 바로 여기에 있습니다!
     'init_roma',
     'chat',
     'channels',
+    'realll_match',
 ]
 
 

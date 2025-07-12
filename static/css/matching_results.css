@@ -1,0 +1,125 @@
+/* static/css/matching_results.css */
+
+.match-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px 40px;
+}
+
+.match-container > h1 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #191f28;
+}
+
+.match-container > p {
+    text-align: center;
+    color: #58616c;
+    margin-bottom: 50px;
+    font-size: 16px;
+}
+
+.match-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.match-card {
+    background-color: #fff;
+    border: 1px solid #f0f2f5;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.match-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0,0,0,.08);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+.card-header h2 {
+    font-size: 22px;
+    margin: 0;
+    font-weight: 700;
+    color: #333d4b;
+}
+
+.match-score {
+    flex-shrink: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #3182f6;
+    background-color: #e9f2fe;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-left: 10px;
+}
+
+.profile-info {
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.profile-info p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 12px;
+    font-size: 15px;
+    color: #4e5968;
+}
+
+.profile-info p:last-child {
+    margin-bottom: 0;
+}
+
+.profile-info p strong {
+    font-weight: 600;
+    color: #333d4b;
+}
+
+.btn-chat {
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    background-color: #3182f6;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color .2s;
+    margin-top: auto; /* 카드의 맨 아래에 버튼을 고정 */
+}
+
+.btn-chat:hover {
+    background-color: #1b64da;
+}
+
+.no-matches {
+    grid-column: 1 / -1; /* 그리드 전체 너비를 차지하도록 설정 */
+    text-align: center;
+    padding: 60px 40px;
+    background-color: #f8f9fa;
+    border: 1px dashed #e0e0e0;
+    border-radius: 12px;
+    color: #868e96;
+}
