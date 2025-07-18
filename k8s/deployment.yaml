@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: roma-app
-        image: lywdev/roma:17
+        image: lywdev/roma:18
         ports:
         - containerPort: 8000 
         imagePullPolicy: Always 
