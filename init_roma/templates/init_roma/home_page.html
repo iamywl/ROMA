@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="main-container">
+    <div class="welcome-header">
+        <h1>안녕하세요, {{ user.username }}님!</h1>
+        <p>ROMA에서 최고의 룸메이트를 만나보세요.</p>
+    </div>
+
+    <!-- 카드 메뉴들을 실제 기능으로 연결하고, 불필요한 검색창은 제거합니다. -->
+    <div class="card-grid">
+        <a href="{% url 'my_page' %}" class="card">
+            <h3>📝 내 프로필 작성</h3>
+            <p>나의 생활 패턴과 룸메이트 선호도를 입력하여 프로필을 완성하세요.</p>
+        </a>
+        
+        <!-- "룸메이트 찾기" 카드를 실제 기능으로 연결합니다. -->
+        <a href="{% url 'realll_match:find_matches' %}" class="card">
+            <h3>🔍 룸메이트 찾기</h3>
+            <p>나와 잘 맞는 룸메이트를 추천받고 찾아보세요.</p>
+        </a>
+
+        <!-- "채팅" 카드를 추가하여 채팅 목록으로 바로 갈 수 있게 합니다. -->
+        <a href="{% url 'chat:chat_list' %}" class="card">
+            <h3>💬 채팅 목록 보기</h3>
+            <p>대화를 나눈 사용자 목록을 확인하고 채팅을 계속하세요.</p>
+        </a>
+    </div>
+
+    <!-- 
+        사용자 검색 기능은 이제 "채팅 목록" 페이지에 통합하거나, 
+        별도 기능으로 만들 수 있으므로 홈에서는 제거합니다.
+        기존의 user-search-container는 삭제합니다.
+    -->
+
+</div>
+{% endblock %}

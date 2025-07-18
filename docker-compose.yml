@@ -1,0 +1,23 @@
+services:
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+
+  web:
+    build: .
+    container_name: roma-web
+    command: >
+      sh -c "python manage.py collectstatic --noinput &&
+             python manage.py migrate &&
+             daphne -b 0.0.0.0 -p 12345 roma.asgi:application"
+    volumes:
+      - .:/app
+      - staticfiles_volume:/app/staticfiles
+    ports:
+      - "12345:12345"
+    depends_on:
+      - redis
+
+volumes:
+  staticfiles_volume:

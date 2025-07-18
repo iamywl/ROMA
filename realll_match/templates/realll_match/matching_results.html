@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/matching_results.css' %}">
+
+<div class="match-container">
+    <h1>룸메이트 추천 목록</h1>
+    <p>나와 잘 맞는 룸메이트들을 확인해보세요. 점수가 높을수록 잘 맞을 확률이 높습니다.</p>
+
+    <div class="match-grid">
+        {% for match in matches %}
+            <div class="match-card">
+                <div class="card-header">
+                    <h2>{{ match.profile.name }} <span style="font-weight: 400; color: #888;">({{ match.profile.user.username }})</span></h2>
+                    <div class="match-score">매칭 점수: {{ match.score }}</div>
+                </div>
+
+                <div class="profile-info">
+                    <p><strong>전공</strong> <span>{{ match.profile.major|default:"미입력" }}</span></p>
+                    <p><strong>MBTI</strong> <span>{{ match.profile.mbti|default:"미입력" }}</span></p>
+                    <p><strong>취침 시간</strong> <span>{{ match.profile.get_bedtime_display }}</span></p>
+                    <p><strong>기상 시간</strong> <span>{{ match.profile.get_wakeup_time_display }}</span></p>
+                    <p><strong>흡연 여부</strong> <span>{{ match.profile.get_smoking_display }}</span></p>
+                </div>
+
+                <a href="{% url 'chat:chat_room' match.profile.user.pk %}" class="btn-chat">채팅하기</a>
+            </div>
+        {% empty %}
+            <div class="no-matches">
+                <h3>추천할 룸메이트가 없습니다.</h3>
+                <p>다른 사용자들이 아직 프로필을 작성하지 않았거나, 내 프로필 정보가 부족할 수 있습니다.</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
