@@ -44,7 +44,6 @@ pipeline {
                 script {
                     sh "git config --global user.email 'jenkins@example.com'"
                     sh "git config --global user.name 'Jenkins CI'"
-                    sh "git clone https://github.com/iamywl/ROMA.git /tmp/repo" 
 
                     dir("/tmp/repo") {
                         sh "sed -i 's|image: ${DOCKER_IMAGE_NAME}:latest|image: ${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER}|g' ${K8S_MANIFESTS_PATH}/deployment.yaml"
