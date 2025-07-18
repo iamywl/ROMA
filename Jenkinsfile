@@ -4,7 +4,7 @@ pipeline {
 
     environment {
         DOCKER_HUB_CREDENTIAL_ID = 'docker-hub-credentials'
-        DOCKER_IMAGE_NAME = 'lywdev'
+        DOCKER_IMAGE_NAME = 'lywdev/roma'
         KUBECONFIG_ID = 'kubernetes-config'
         K8S_MANIFESTS_PATH = 'k8s'
     }
