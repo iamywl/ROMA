@@ -1,0 +1,436 @@
+
+[02/Jul/2025 03:47:00] "GET / HTTP/1.1" 200 132
+[02/Jul/2025 03:47:00] "GET / HTTP/1.1" 200 132
+[02/Jul/2025 03:47:00] "GET / HTTP/1.1" 200 132
+[02/Jul/2025 03:55:02] "GET / HTTP/1.1" 200 132
+[02/Jul/2025 03:55:03] "GET / HTTP/1.1" 200 132
+[02/Jul/2025 03:55:03] "GET / HTTP/1.1" 200 132
+[02/Jul/2025 04:40:56] "GET / HTTP/1.1" 200 132
+[02/Jul/2025 04:40:56] "GET / HTTP/1.1" 200 132
+[02/Jul/2025 04:40:56] "GET / HTTP/1.1" 200 132
+[02/Jul/2025 04:40:56] "GET / HTTP/1.1" 200 132
+Not Found: /about
+[02/Jul/2025 04:41:00] "GET /about HTTP/1.1" 404 2324
+[02/Jul/2025 04:41:07] "GET / HTTP/1.1" 200 132
+[02/Jul/2025 04:41:11] "GET /init_roma/ HTTP/1.1" 200 132
+[05/Jul/2025 03:33:33] "GET / HTTP/1.1" 200 132
+[05/Jul/2025 03:33:34] "GET / HTTP/1.1" 200 132
+/app/init_roma/views.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 02, 2025 - 03:26:44
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/threading.py", line 980, in _bootstrap_inner
+    self.run()
+  File "/usr/local/lib/python3.9/threading.py", line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.9/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/django/core/management/commands/runserver.py", line 133, in inner_run
+    self.check(display_num_errors=True)
+  File "/usr/local/lib/python3.9/site-packages/django/core/management/base.py", line 485, in check
+    all_issues = checks.run_checks(
+  File "/usr/local/lib/python3.9/site-packages/django/core/checks/registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "/usr/local/lib/python3.9/site-packages/django/core/checks/urls.py", line 14, in check_url_config
+    return check_resolver(resolver)
+  File "/usr/local/lib/python3.9/site-packages/django/core/checks/urls.py", line 24, in check_resolver
+    return check_method()
+  File "/usr/local/lib/python3.9/site-packages/django/urls/resolvers.py", line 494, in check
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python3.9/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.9/site-packages/django/urls/resolvers.py", line 715, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python3.9/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.9/site-packages/django/urls/resolvers.py", line 708, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/local/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/app/roma/urls.py", line 20, in <module>
+    from init_roma import views as init_roma_views 
+  File "/app/init_roma/views.py", line 19
+    return HttpResponse("<h2>init_roma 앱 소개</h2><p>이 앱은 Django 프로젝트의 초기 설정 및 기본 페이지를 담당합니다. 함께 성장해나가요!</p>")
+IndentationError: unexpected indent
+/app/init_roma/views.py changed, reloading.
+Performing system checks...
+
+Watching for file changes with StatReloader
+/app/init_roma/urls.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 05, 2025 - 03:34:06
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/app/roma/settings.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 05, 2025 - 03:34:14
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Traceback (most recent call last):
+  File "/app/manage.py", line 22, in <module>
+    main()
+  File "/app/manage.py", line 18, in main
+    execute_from_command_line(sys.argv)
+  File "/usr/local/lib/python3.9/site-packages/django/core/management/__init__.py", line 442, in execute_from_command_line
+    utility.execute()
+  File "/usr/local/lib/python3.9/site-packages/django/core/management/__init__.py", line 382, in execute
+    settings.INSTALLED_APPS
+  File "/usr/local/lib/python3.9/site-packages/django/conf/__init__.py", line 102, in __getattr__
+    self._setup(name)
+  File "/usr/local/lib/python3.9/site-packages/django/conf/__init__.py", line 89, in _setup
+    self._wrapped = Settings(settings_module)
+  File "/usr/local/lib/python3.9/site-packages/django/conf/__init__.py", line 217, in __init__
+    mod = importlib.import_module(self.SETTINGS_MODULE)
+  File "/usr/local/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/app/roma/settings.py", line 44, in <module>
+    ddfd
+NameError: name 'ddfd' is not defined
+Watching for file changes with StatReloader
+[05/Jul/2025 03:35:21] "GET / HTTP/1.1" 200 132
+[05/Jul/2025 03:35:21] "GET / HTTP/1.1" 200 132
+[05/Jul/2025 03:35:21] "GET / HTTP/1.1" 200 132
+[05/Jul/2025 03:35:21] "GET / HTTP/1.1" 200 132
+/app/roma/settings.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 05, 2025 - 03:35:19
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/app/roma/settings.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 05, 2025 - 03:36:07
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/app/roma/settings.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 05, 2025 - 03:37:43
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+[05/Jul/2025 03:37:58] "GET / HTTP/1.1" 200 132
+[05/Jul/2025 03:37:58] "GET / HTTP/1.1" 200 132
+[05/Jul/2025 03:37:58] "GET / HTTP/1.1" 200 132
+/app/roma/settings.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 05, 2025 - 03:37:45
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/app/roma/settings.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 05, 2025 - 03:38:04
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/app/roma/settings.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 05, 2025 - 03:38:12
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+[05/Jul/2025 03:38:21] "GET / HTTP/1.1" 200 132
+/app/roma/settings.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 05, 2025 - 03:38:13
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/app/roma/settings.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 05, 2025 - 03:38:27
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/app/roma/urls.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 05, 2025 - 03:38:28
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/app/roma/urls.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 05, 2025 - 03:53:09
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/app/roma/urls.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 05, 2025 - 04:19:04
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/app/roma/urls.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 05, 2025 - 04:19:06
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/app/roma/urls.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 05, 2025 - 04:19:08
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/threading.py", line 980, in _bootstrap_inner
+    self.run()
+  File "/usr/local/lib/python3.9/threading.py", line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.9/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/django/core/management/commands/runserver.py", line 133, in inner_run
+    self.check(display_num_errors=True)
+  File "/usr/local/lib/python3.9/site-packages/django/core/management/base.py", line 485, in check
+    all_issues = checks.run_checks(
+  File "/usr/local/lib/python3.9/site-packages/django/core/checks/registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "/usr/local/lib/python3.9/site-packages/django/core/checks/urls.py", line 14, in check_url_config
+    return check_resolver(resolver)
+  File "/usr/local/lib/python3.9/site-packages/django/core/checks/urls.py", line 24, in check_resolver
+    return check_method()
+  File "/usr/local/lib/python3.9/site-packages/django/urls/resolvers.py", line 494, in check
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python3.9/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.9/site-packages/django/urls/resolvers.py", line 715, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python3.9/site-packages/django/utils/functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.9/site-packages/django/urls/resolvers.py", line 708, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/local/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/app/roma/urls.py", line 28, in <module>
+    path('inputer/', include('inputer.urls')), # 이 줄 추가
+  File "/usr/local/lib/python3.9/site-packages/django/urls/conf.py", line 38, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/local/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 972, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 984, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'inputer'
+/app/roma/settings.py changed, reloading.
+Performing system checks...
+
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/threading.py", line 980, in _bootstrap_inner
+    self.run()
+  File "/usr/local/lib/python3.9/threading.py", line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.9/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/django/core/management/commands/runserver.py", line 125, in inner_run
+    autoreload.raise_last_exception()
+  File "/usr/local/lib/python3.9/site-packages/django/utils/autoreload.py", line 87, in raise_last_exception
+    raise _exception[1]
+  File "/usr/local/lib/python3.9/site-packages/django/core/management/__init__.py", line 394, in execute
+    autoreload.check_errors(django.setup)()
+  File "/usr/local/lib/python3.9/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/usr/local/lib/python3.9/site-packages/django/apps/registry.py", line 91, in populate
+    app_config = AppConfig.create(entry)
+  File "/usr/local/lib/python3.9/site-packages/django/apps/config.py", line 193, in create
+    import_module(entry)
+  File "/usr/local/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 984, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'inputeer'
+Watching for file changes with StatReloader
+[05/Jul/2025 04:42:05] "GET / HTTP/1.1" 200 132
+[05/Jul/2025 04:42:06] "GET / HTTP/1.1" 200 132
+[05/Jul/2025 04:42:06] "GET / HTTP/1.1" 200 132
+[05/Jul/2025 04:42:10] "GET /inputer HTTP/1.1" 301 0
+[05/Jul/2025 04:42:10] "GET /inputer/ HTTP/1.1" 302 0
+Not Found: /accounts/login/
+[05/Jul/2025 04:42:10] "GET /accounts/login/?next=/inputer/ HTTP/1.1" 404 2477
+Not Found: /accounts/login/
+[05/Jul/2025 04:42:21] "GET /accounts/login/?next=/inputer/ HTTP/1.1" 404 2477
+/app/inputer/apps.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 05, 2025 - 04:42:01
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/app/inputer/apps.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 16, 2025 - 14:16:49
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/app/inputer/views.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 17, 2025 - 08:55:06
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/app/inputer/views.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 18, 2025 - 00:20:34
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/app/roma/settings.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 18, 2025 - 04:57:49
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+/app/init_roma/urls.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+July 18, 2025 - 04:59:18
+Django version 4.2, using settings 'roma.settings'
+Starting development server at http://0.0.0.0:12345/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/threading.py", line 980, in _bootstrap_inner
+    self.run()
+  File "/usr/local/lib/python3.9/threading.py", line 917, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.9/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/django/core/management/commands/runserver.py", line 125, in inner_run
+    autoreload.raise_last_exception()
+  File "/usr/local/lib/python3.9/site-packages/django/utils/autoreload.py", line 87, in raise_last_exception
+    raise _exception[1]
+  File "/usr/local/lib/python3.9/site-packages/django/core/management/__init__.py", line 394, in execute
+    autoreload.check_errors(django.setup)()
+  File "/usr/local/lib/python3.9/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/usr/local/lib/python3.9/site-packages/django/apps/registry.py", line 91, in populate
+    app_config = AppConfig.create(entry)
+  File "/usr/local/lib/python3.9/site-packages/django/apps/config.py", line 193, in create
+    import_module(entry)
+  File "/usr/local/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 984, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'channels'
