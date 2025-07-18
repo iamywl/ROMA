@@ -1,0 +1,13 @@
+# k8s/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: roma-app-service
+spec:
+  selector:
+    app: roma-app
+  ports:
+    - protocol: TCP
+      port: 80 
+      targetPort: 8000 
+  type: NodePort 

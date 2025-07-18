@@ -1,0 +1,23 @@
+# k8s/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: roma-app
+  labels:
+    app: roma-app
+spec:
+  replicas: 1 # 프리티어이므로 1개로 유지
+  selector:
+    matchLabels:
+      app: roma-app
+  template:
+    metadata:
+      labels:
+        app: roma-app
+    spec:
+      containers:
+      - name: roma-app
+        image: lywdev/roma:latest 
+        ports:
+        - containerPort: 8000 
+        imagePullPolicy: Always 
