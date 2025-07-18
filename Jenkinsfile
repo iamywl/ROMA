@@ -45,7 +45,7 @@ pipeline {
                     sh "git config --global user.email 'jenkins@example.com'"
                     sh "git config --global user.name 'Jenkins CI'"
 
-                    dir("/tmp/repo") {
+                    dir("${WORKSPACE}") {
                         sh "sed -i 's|image: ${DOCKER_IMAGE_NAME}:latest|image: ${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER}|g' ${K8S_MANIFESTS_PATH}/deployment.yaml"
 
                         withCredentials([usernamePassword(credentialsId: 'github-user-pat', passwordVariable: 'GH_PASSWORD', usernameVariable: 'GH_USERNAME')]) {
