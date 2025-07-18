@@ -22,8 +22,8 @@ pipeline {
             steps {
                 script {
                     // Dockerfile이 ROMA 프로젝트 루트에 있다면
-                    sh "docker build -t ${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER} ."
-                    sh "docker build -t ${DOCKER_IMAGE_NAME}:latest ." // latest 태그도 함께 빌드
+                    sh "docker build --no-cache -t ${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER} ${WORKSPACE}"
+                    sh "docker build --no-cache -t ${DOCKER_IMAGE_NAME}:latest ${WORKSPACE}"
                 }
             }
         }
