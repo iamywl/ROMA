@@ -2,24 +2,22 @@
 
 ## [버그 기록](https://docs.google.com/presentation/d/1H_awmql93YOD6v-1pSeu13CaCOZjtBIWA9208dpQGys/edit?usp=sharing)
 
-
 ### 시스템 설계 다이어그램
 
 1. **ERD**
-![ERD](./img/ERD.png)
+![ERD](src/img/ERD.png)
 
 2. **로그인/프로필 시퀀스**
-![Login Profile Diagram](./img/loginprofil_diagram.png)
+![Login Profile](src/img/loginprofil_diagram.png)
 
 3. **매칭 로직**
-![Matching Diagram](./img/matching_diagram.png)
+![Matching](src/img/matching_diagram.png)
 
 4. **서비스 인프라 아키텍처**
-![Service Infra Architecture](./img/service_infra_arch.png)
+![Infra](src/img/service_infra_arch.png)
 
 5. **웹소켓 구조**
-![WebSocket Diagram](./img/websocket_diagram.png)
-
+![WebSocket](src/img/websocket_diagram.png)
 
 
 
