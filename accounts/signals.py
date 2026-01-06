@@ -19,5 +19,4 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
     
-    # User 객체가 저장될 때마다 연결된 profile도 저장되도록 보장합니다.
     instance.profile.save()
